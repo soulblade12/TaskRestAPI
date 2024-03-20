@@ -46,6 +46,17 @@ namespace MyRESTServices.Controllers
             return Ok(result);
         }
 
+        [HttpGet("articleID")]
+        public async Task<IActionResult> GetArticleByID(int id)
+        {
+            var result = await _articleBLL.GetArticleByCategory(id);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post(ArticleCreateDTO articleCreate)
         {

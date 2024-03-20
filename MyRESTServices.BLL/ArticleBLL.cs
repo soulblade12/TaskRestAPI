@@ -42,9 +42,10 @@ namespace MyRESTServices.BLL
             return articlesDTO;
         }
 
-        public Task<IEnumerable<ArticleDTO>> GetArticleByCategory(int categoryId)
+        public async Task<IEnumerable<ArticleDTO>> GetArticleByCategory(int categoryId)
         {
-            throw new NotImplementedException();
+            var articlebyCategory = await _articledata.GetArticleByCategory(categoryId);
+            return _mapper.Map<IEnumerable<ArticleDTO>>(articlebyCategory);
         }
 
         public async Task<ArticleDTO> GetArticleById(int id)

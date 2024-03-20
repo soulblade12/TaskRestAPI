@@ -26,9 +26,10 @@ namespace MyRESTServices.Data
             return articles;
         }
 
-        public Task<IEnumerable<Article>> GetArticleByCategory(int categoryId)
+        public async Task<IEnumerable<Article>> GetArticleByCategory(int categoryId)
         {
-            throw new NotImplementedException();
+            var articles = await _context.Articles.Where(c => c.CategoryId == categoryId).ToListAsync();
+            return articles;
         }
 
         public async Task<IEnumerable<Article>> GetArticleWithCategory()
